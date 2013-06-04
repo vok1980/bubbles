@@ -1,7 +1,9 @@
 
 
 ##build.msvc10
-
+build.msvc10/CMakeFiles
+build.msvc10/CMakeCache.txt
+build.msvc10/cmake_install.cmake
 
 
 ## Ignore Visual Studio temporary files, build results, and
