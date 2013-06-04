@@ -1,4 +1,4 @@
 bubbles
 =======
 
-test project for Social Quantum
+Simple multi-platform game
