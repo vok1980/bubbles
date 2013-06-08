@@ -1,16 +1,23 @@
 
-#include "game.h"
+#include <windows.h>
+
+#include "Application.h"
 
 
-int main(int argc, char *argv[])
+
+// WinMain
+int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
+	LPSTR lpCmdLine, int nCmdShow)
 {
+	int iInitRet = CApplication::instance().Initialize(hInst, "Bubbles", "Bubbles game");
 
-	CGame game;
+	if (0 != iInitRet)
+	{
+		return 1;
+	}
 
-	game.OnGameLoopTick(0.0);
-
-	
-	return 0;
+	return CApplication::instance().Run();
 }
+
 
 
