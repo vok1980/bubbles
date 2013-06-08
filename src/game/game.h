@@ -2,6 +2,7 @@
 #pragma once
 
 
+
 class CGame
 {
 public:
@@ -9,7 +10,15 @@ public:
 	virtual ~CGame();
 
 public:
-	void OnGlContextCreated(void); 
+	void Init(int iWidth, int iHeight); 
 	void OnGameLoopTick(float fDeltaTime);
+
+private:
+	void CalcScene(void);
+	void DrawFrame(void);
+
+private:
+	int m_iWidth; 
+	int m_iHeight;
 };
 
