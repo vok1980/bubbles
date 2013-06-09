@@ -18,6 +18,12 @@ CBubble::CBubble(CGameObject *pParent, BoardSize_t iPosX, BoardSize_t iPosY, Boa
 }
 
 
+long CBubble::GetPoints(void)
+{
+	return GetVelocity() / 10;
+}
+
+
 float CBubble::GetVelocity(void)
 {
 	return VELOCITY_KOEFF / (m_iRadius * m_iRadius);
@@ -37,7 +43,7 @@ BoardSize_t CBubble::GetDimention(ObjectDimention)
 }
 
 
-bool CBubble::IsValid(void)
+bool CBubble::IsValid(void) const
 {
 	assert(NULL != GetParent());
 
@@ -52,3 +58,11 @@ bool CBubble::IsValid(void)
 	return true;	
 }
 
+
+
+void CBubble::GetPosition(BoardSize_t &refPosX, BoardSize_t &refPosY, BoardSize_t &refRadius) const
+{
+	refPosX = m_iPosX; 
+	refPosY = m_iPosY; 
+	refRadius = m_iRadius;
+}

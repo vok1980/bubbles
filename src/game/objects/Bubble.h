@@ -18,7 +18,9 @@ public:
 public:
 	virtual void AcceptVisitor(IGameObjVisitor*);
 	virtual BoardSize_t GetDimention(ObjectDimention);
-	bool IsValid(void);
+	bool IsValid(void) const;
+	void GetPosition(BoardSize_t &refPosX, BoardSize_t &refPosY, BoardSize_t &refRadius) const;
+	long GetPoints(void);
 
 private:
 	float GetVelocity(void);

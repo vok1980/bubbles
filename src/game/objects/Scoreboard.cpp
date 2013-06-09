@@ -1,6 +1,8 @@
 
 #include "Scoreboard.h"
 
+#include "IGameObjVisitor.h"
+
 
 
 
@@ -28,3 +30,14 @@ void CScoreboard::AddScore(score_t iScore)
 }
 
 
+void CScoreboard::AcceptVisitor(IGameObjVisitor *pVisitor)
+{
+	pVisitor->Visit(this);
+	CGameObject::AcceptVisitor(pVisitor);
+}
+
+
+BoardSize_t CScoreboard::GetDimention(ObjectDimention)
+{
+	return 15;
+}

@@ -18,6 +18,9 @@ public:
 	score_t GetScore(void);
 	void AddScore(score_t iScore);
 
+	virtual void AcceptVisitor(IGameObjVisitor*);
+	virtual BoardSize_t GetDimention(ObjectDimention);
+
 private:
 	score_t m_iScoreVal;
 };

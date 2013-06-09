@@ -12,7 +12,7 @@ CGraphics::CGraphics()
 
 
 CGraphics::~CGraphics()
-{
+{	
 	ReleaseOpenGL();
 }
 
@@ -27,6 +27,10 @@ int CGraphics::Init(HWND _hWnd)
 
 	m_hRC = wglCreateContext(m_hDC);
 	wglMakeCurrent(m_hDC, m_hRC);
+
+	glClearColor( 0, 0, 0, 0 );
+
+	wglUseFontBitmaps(m_hDC, 0, 256, 1000);
 
 	return 0;
 }
@@ -46,6 +50,8 @@ void CGraphics::SwapBuffers(void)
 
 void CGraphics::ReleaseOpenGL()
 {
+	glDeleteLists(1000, 256); 
+
 	if(m_hRC)
 	{
 		wglMakeCurrent(m_hDC, 0);

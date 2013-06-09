@@ -23,7 +23,6 @@ public:
 	void RemoveChild(CGameObject*);
 	int GetChildCount() const;
 	
-protected:
 	CGameObject* GetParent(void) const;
 
 private:

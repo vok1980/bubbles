@@ -4,11 +4,15 @@
 
 #include <memory>
 #include <map>
+#include <list>
 #include "IBoardSize.h"
+
+#include "point.h"
 
 
 class CGameObjectFactory;
 class CScene;
+class CScoreboard;
 
 
 class CGame : public IDimension
@@ -18,8 +22,9 @@ public:
 	virtual ~CGame();
 
 public:
-	void Init(int iWidth, int iHeight); 
+	void Init(long iWidth, long iHeight); 
 	void OnGameLoopTick(float fDeltaTime);
+	void OnMouseClick(const SPoint &point);
 
 private:
 	void CalcScene(float fDeltaTime);
@@ -31,5 +36,8 @@ private:
 	std::map<ObjectDimention, BoardSize_t> m_aSize;
 	std::auto_ptr<CGameObjectFactory> m_pObjectFactory;
 	std::auto_ptr<CScene> m_pMainScene;
+	CScoreboard *m_pScoreboard;			///< Should not delete this pointer
+
+	std::list< SPoint > m_aClicks;
 };
 

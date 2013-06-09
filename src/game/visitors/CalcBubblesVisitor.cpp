@@ -37,4 +37,7 @@ void CCalcBubblesVisitor::PostVisit(CGameObject*)
 }
 
 
+void CCalcBubblesVisitor::Visit(CScoreboard *pBubble)
+{
+}
 

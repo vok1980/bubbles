@@ -23,6 +23,7 @@ public:
 	int Run(void);
 
 private:
+	void OnLBMouseClick(POINT pt);
 	HWND CreateMainWindow(LPCSTR pWindowName, int nWidth, int nHeight, int nCmdShow, bool bIsOpenGL);
 	static LRESULT CALLBACK WndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
 	int Init(HWND hWndMain);
@@ -31,6 +32,7 @@ private:
 	void ReleaseAll(void);
 
 private:
+	HWND m_hWndMain;
 	HINSTANCE m_hInstance;
 	std::string m_strAppName;
 	std::auto_ptr<CGraphics> m_pGraphics;

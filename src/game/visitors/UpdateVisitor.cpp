@@ -3,8 +3,8 @@
 
 #include "UpdateVisitor.h"
 
-#include "../GameObject.h"
-#include "../Bubble.h"
+#include "GameObject.h"
+#include "Bubble.h"
 
 
 
@@ -26,6 +26,11 @@ CUpdateVisitor::~CUpdateVisitor()
 
 
 void CUpdateVisitor::Visit(CScene*)
+{
+}
+
+
+void CUpdateVisitor::Visit(CScoreboard *pBubble)
 {
 }
 

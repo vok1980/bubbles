@@ -33,13 +33,13 @@ int CApplication::Initialize(HINSTANCE hInstance, const char * szAppName, const 
 	int iHeightScreen = GetSystemMetrics(SM_CYSCREEN);
 
 	// Создаем окно главного приложения
-	HWND hWndMain = CreateMainWindow(szWindowName, min(480, iWidthScreen), min(640, iHeightScreen), SW_NORMAL, true);
+	m_hWndMain = CreateMainWindow(szWindowName, min(480, iWidthScreen), min(640, iHeightScreen), SW_NORMAL, true);
 	
-	if(!hWndMain)
+	if(!m_hWndMain)
 		return 1;
 	
 	// Инициализация
-	if ( 0 != Init(hWndMain) )
+	if ( 0 != Init(m_hWndMain) )
 		return 2;
 
 	return 0;
@@ -93,6 +93,14 @@ LRESULT CALLBACK CApplication::WndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPA
 	switch( uMsg )
 	{
 		case WM_LBUTTONDOWN:
+			{
+				POINT pt;
+				pt.x = LOWORD(lParam);
+				pt.y = HIWORD(lParam);
+
+				CApplication::instance().OnLBMouseClick(pt);
+			}
+			
 			break;
 
 		case WM_SIZE:
@@ -117,7 +125,7 @@ int CApplication::Init(HWND hWndMain)
 		return iRet;
 
 	RECT rect;
-	GetWindowRect(hWndMain, &rect);
+	GetClientRect(hWndMain, &rect);
 
 	m_pGame.reset(new CGame());
 	m_pGame->Init(rect.right - rect.left, rect.bottom - rect.top);
@@ -181,5 +189,14 @@ void CApplication::ReleaseAll(void)
 //	m_graphics.ReleaseOpenGL();
 }
 
+
+void CApplication::OnLBMouseClick(POINT pt)
+{
+	if (m_pGame.get())
+	{
+		SPoint point = {pt.x, pt.y};
+		m_pGame->OnMouseClick(point);
+	}
+}
 
 

@@ -11,23 +11,27 @@
 #include "game.h"
 #include "GameObjectFactory.h"
 #include "Scene.h"
+#include "Scoreboard.h"
 
 #include "color.h"
 
 #include "CalcBubblesVisitor.h"
 #include "UpdateVisitor.h"
 #include "DrawVisitor.h"
+#include "ClickVisitor.h"
 
 
 
-#define MAX_BUBBLES_COUNT 15
+#define MAX_BUBBLES_COUNT 12
 
 
 
-CGame::CGame() 
+CGame::CGame() :
+	m_pScoreboard(NULL)
 {
 	m_pObjectFactory.reset(new CGameObjectFactory());
 	m_pMainScene.reset(new CScene(NULL, this));
+	m_pScoreboard = new CScoreboard( m_pMainScene.get() );
 }
 
 
@@ -36,7 +40,7 @@ CGame::~CGame()
 }
 
 
-void CGame::Init(int iWidth, int iHeight)
+void CGame::Init(long iWidth, long iHeight)
 {
 	m_aSize[OD_WIDTH] = iWidth;
 	m_aSize[OD_HEIGHT] = iHeight;
@@ -76,6 +80,14 @@ void CGame::DrawFrame(void)
 void CGame::CalcScene(float fDeltaTime)
 {
 	{
+		CClickVisitor visClick(m_aClicks);
+		m_aClicks.clear();
+		m_pMainScene->AcceptVisitor(&visClick);
+		
+		visClick.ChargePoints(m_pScoreboard);
+	}
+
+	{
 		CCalcBubblesVisitor visCalc;
 		m_pMainScene->AcceptVisitor(&visCalc);
 
@@ -98,6 +110,12 @@ BoardSize_t CGame::GetDimention(ObjectDimention dim)
 
 	assert(refSize > 0);
 	return refSize;
+}
+
+
+void CGame::OnMouseClick(const SPoint &point)
+{	 
+	m_aClicks.push_back(point);
 }
 
 
