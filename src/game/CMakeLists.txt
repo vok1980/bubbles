@@ -5,14 +5,21 @@ project (bubbles_game)
 
 include_directories ( ./../tools )
 include_directories ( ./visitors )
+include_directories ( ./objects )
+include_directories ( . )
 
-AUX_SOURCE_DIRECTORY( ./visitors SRC )
-
-source_group(visitors FILES ${SRC})
-
+AUX_SOURCE_DIRECTORY( ./visitors SRC_VIS )
+AUX_SOURCE_DIRECTORY( ./objects SRC_OBJ )
 AUX_SOURCE_DIRECTORY( . SRC )
 
+source_group("Source Files\\visitors" FILES ${SRC_VIS})
+source_group("Source Files\\objects" FILES ${SRC_OBJ})
 
-add_library(bubbleslib ${SRC})
+
+add_library(bubbleslib 
+					${SRC} 
+					${SRC_VIS}
+					${SRC_OBJ}
+)
 
 

@@ -9,7 +9,7 @@
 #include <math.h>
 
 
-#include "../Bubble.h"
+#include "Bubble.h"
 
 
 
