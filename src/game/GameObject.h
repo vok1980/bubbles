@@ -6,6 +6,8 @@
 
 #include "IBoardSize.h"
 
+class IGameObjVisitor;
+
 
 class CGameObject : public IDimension
 {
@@ -14,22 +16,23 @@ public:
 	virtual ~CGameObject();
 
 public:
-	virtual bool Update(double dTimeDelta) = 0;
-	virtual void Draw(void) = 0;
+	virtual void AcceptVisitor(IGameObjVisitor*) = 0;
 
 public:
 	void AddChild(CGameObject*);
 	void RemoveChild(CGameObject*);
 	int GetChildCount() const;
+	
+protected:
+	CGameObject* GetParent(void) const;
 
 private:
 	void AtachToParent(CGameObject *pParent);
+	void DetachFromParent(void);
 
-protected:
+private:
 	typedef std::list<CGameObject*> ObjectsColl_t;
 	ObjectsColl_t m_aObjects;
-
-private:	
 	CGameObject* m_pParent;
 };
 

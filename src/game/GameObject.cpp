@@ -1,6 +1,10 @@
 
 #include "GameObject.h"
 
+#include <algorithm>
+
+#include "IGameObjVisitor.h"
+
 
 
 
@@ -14,6 +18,7 @@ CGameObject::CGameObject(CGameObject *pParent) :
 
 CGameObject::~CGameObject()
 {
+	DetachFromParent();
 }
 
 
@@ -35,11 +40,37 @@ int CGameObject::GetChildCount() const
 }
 
 
+CGameObject* CGameObject::GetParent(void) const
+{
+	return m_pParent;
+}
+
+
 void CGameObject::AtachToParent(CGameObject *pParent)
 {
 	m_pParent = pParent;
 
 	if (m_pParent)
 		m_pParent->AddChild(this);
+}
+
+
+void CGameObject::DetachFromParent(void)
+{
+	if (m_pParent)
+		m_pParent->RemoveChild(this);
+}
+
+
+
+void CGameObject::AcceptVisitor(IGameObjVisitor *pVisitor)
+{
+	std::for_each(m_aObjects.begin(), m_aObjects.end(), 
+		[pVisitor](const ObjectsColl_t::value_type &refVal)
+		{
+			refVal->AcceptVisitor(pVisitor);
+		});	
+
+	pVisitor->PostVisit(this);
 }
 

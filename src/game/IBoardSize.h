@@ -2,7 +2,7 @@
 #pragma once
 
 
-typedef unsigned int BoardSize_t;
+typedef float BoardSize_t;
 
 enum ObjectDimention
 {

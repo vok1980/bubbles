@@ -170,8 +170,9 @@ void CApplication::OnIdle(void)
 {	
 	double dDeltaTime = GetGameTimePassed();
 
-	m_pGraphics->SwapBuffers();
+	m_pGraphics->Clear();
 	m_pGame->OnGameLoopTick(dDeltaTime);
+	m_pGraphics->SwapBuffers();
 }
 
 

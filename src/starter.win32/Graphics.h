@@ -9,7 +9,8 @@ public:
 	virtual ~CGraphics();
 
 	int Init(HWND hWnd);	
-	void SwapBuffers(void);
+	void Clear(void);
+	void SwapBuffers(void);	
 
 private:
 	void ReleaseOpenGL();

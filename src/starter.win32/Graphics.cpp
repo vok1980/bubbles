@@ -32,10 +32,15 @@ int CGraphics::Init(HWND _hWnd)
 }
 
 
+void CGraphics::Clear(void)
+{
+	::glClear(GL_COLOR_BUFFER_BIT);
+}
+
+
 void CGraphics::SwapBuffers(void)
 {
 	::SwapBuffers(m_hDC);
-	glClear(GL_COLOR_BUFFER_BIT);
 }
 
 

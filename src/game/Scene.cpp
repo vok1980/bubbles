@@ -1,6 +1,7 @@
 
 
 #include "Scene.h"
+#include "IGameObjVisitor.h"
 
 
 
@@ -14,29 +15,11 @@ CScene::~CScene()
 {}
 
 
-bool CScene::Update(double dTimeDelta)
+void CScene::AcceptVisitor(IGameObjVisitor *pVisitor)
 {
-	ObjectsColl_t::iterator it = m_aObjects.begin();
-
-	while (it != m_aObjects.end())
-	{
-		if ((*it)->Update(dTimeDelta))
-		{
-			++it;
-		}
-		else
-		{
-			delete *it;
-			it = m_aObjects.erase(it);
-		}
-	}
-
-	return true;
+	pVisitor->Visit(this);
+	CGameObject::AcceptVisitor(pVisitor);
 }
-
-
-void CScene::Draw(void)
-{}
 
 
 BoardSize_t CScene::GetDimention(ObjectDimention dim)

@@ -12,8 +12,7 @@ public:
 	virtual ~CScene();
 
 public:
-	virtual bool Update(double dTimeDelta);
-	virtual void Draw(void);
+	virtual void AcceptVisitor(IGameObjVisitor*);
 	virtual BoardSize_t GetDimention(ObjectDimention);
 
 private:
