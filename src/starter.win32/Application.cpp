@@ -12,8 +12,8 @@
 
 
 CApplication::CApplication() : 
-//	m_clocksBegin(0),
-	m_clocksLast(0)
+	m_clocksLast(0),
+	m_bActive(true)
 {
 }
 
@@ -115,6 +115,20 @@ LRESULT CALLBACK CApplication::WndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPA
 			break;
 
 		case WM_SIZE:
+			
+			switch(wParam)
+			{
+				case SIZE_RESTORED:
+				case SIZE_MAXIMIZED:
+					CApplication::instance().SetActive(true);
+					break;
+
+				default:
+					CApplication::instance().SetActive(false);
+					break;
+						
+			}
+
 			CApplication::instance().OnSize();
 			break;
 
@@ -156,7 +170,7 @@ int CApplication::Run(void)
 
 	while(msg.message!=WM_QUIT)
 	{
-		if(PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE))
+		if (PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE) || !m_bActive)
 		{
 			if(GetMessage(&msg, NULL, 0, 0))
 			{
@@ -203,6 +217,17 @@ void CApplication::OnIdle(void)
 void CApplication::ReleaseAll(void)
 {
 //	m_graphics.ReleaseOpenGL();
+}
+
+
+void CApplication::SetActive(bool bActive)
+{
+	if (!bActive)
+	{
+		m_clocksLast = 0;
+	}
+
+	m_bActive = bActive;
 }
 
 
