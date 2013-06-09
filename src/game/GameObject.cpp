@@ -29,9 +29,17 @@ void CGameObject::RemoveChild(CGameObject *pChild)
 }
 
 
+int CGameObject::GetChildCount() const
+{
+	return m_aObjects.size();
+}
+
+
 void CGameObject::AtachToParent(CGameObject *pParent)
 {
 	m_pParent = pParent;
-	m_pParent->AddChild(this);
+
+	if (m_pParent)
+		m_pParent->AddChild(this);
 }
 

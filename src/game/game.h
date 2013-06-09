@@ -8,8 +8,10 @@
 
 
 class CGameObjectFactory;
+class CScene;
 
-class CGame : public IBoardSize
+
+class CGame : public IDimension
 {
 public:
 	CGame();
@@ -20,7 +22,7 @@ public:
 	void OnGameLoopTick(float fDeltaTime);
 
 private:
-	void CalcScene(void);
+	void CalcScene(float fDeltaTime);
 	void DrawFrame(void);
 
 	BoardSize_t GetDimention(ObjectDimention);
@@ -28,5 +30,6 @@ private:
 private:
 	std::map<ObjectDimention, BoardSize_t> m_aSize;
 	std::auto_ptr<CGameObjectFactory> m_pObjectFactory;
+	std::auto_ptr<CScene> m_pMainScene;
 };
 

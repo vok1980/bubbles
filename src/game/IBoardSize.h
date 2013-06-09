@@ -12,7 +12,7 @@ enum ObjectDimention
 };
 
 
-class IBoardSize
+class IDimension
 {
 public:
 	virtual BoardSize_t GetDimention(ObjectDimention) = 0;

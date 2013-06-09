@@ -10,15 +10,20 @@
 
 #include "game.h"
 #include "GameObjectFactory.h"
+#include "Scene.h"
 
 #include "color.h"
 
+
+
+#define MAX_BUBBLES_COUNT 15
 
 
 
 CGame::CGame() 
 {
 	m_pObjectFactory.reset(new CGameObjectFactory());
+	m_pMainScene.reset(new CScene(NULL, this));
 }
 
 
@@ -36,7 +41,7 @@ void CGame::Init(int iWidth, int iHeight)
 
 void CGame::OnGameLoopTick(float fDeltaTime)
 {
-	CalcScene();
+	CalcScene(fDeltaTime);
 	DrawFrame();
 }
 
@@ -98,8 +103,14 @@ void CGame::DrawFrame(void)
 }
 
 
-void CGame::CalcScene(void)
+void CGame::CalcScene(float fDeltaTime)
 {
+	if (m_pMainScene->GetChildCount() < MAX_BUBBLES_COUNT)
+	{
+		m_pObjectFactory->CreateBubble(m_pMainScene.get());
+	}
+
+	m_pMainScene->Update(fDeltaTime);
 }
 
 

@@ -4,8 +4,10 @@
 
 #include <list>
 
+#include "IBoardSize.h"
 
-class CGameObject
+
+class CGameObject : public IDimension
 {
 public:
 	CGameObject(CGameObject *pParent);
@@ -18,12 +20,16 @@ public:
 public:
 	void AddChild(CGameObject*);
 	void RemoveChild(CGameObject*);
+	int GetChildCount() const;
 
 private:
 	void AtachToParent(CGameObject *pParent);
 
-private:
-	std::list<CGameObject*> m_aObjects;
+protected:
+	typedef std::list<CGameObject*> ObjectsColl_t;
+	ObjectsColl_t m_aObjects;
+
+private:	
 	CGameObject* m_pParent;
 };
 
