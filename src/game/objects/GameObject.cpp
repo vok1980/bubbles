@@ -20,12 +20,10 @@ CGameObject::~CGameObject()
 {
 	DetachFromParent();
 
-	std::for_each(m_aObjects.begin(), m_aObjects.end(),
-		[](const ObjectsColl_t::value_type &refVal)
-		{
-			delete refVal;
-		}
-	);
+	while ( m_aObjects.size() > 0 )
+	{
+		delete *m_aObjects.begin();
+	}
 }
 
 
