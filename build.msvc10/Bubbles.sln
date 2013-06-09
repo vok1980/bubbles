@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bubbles", "src\starter.win32\bubbles.vcxproj", "{97B55777-36B9-4E81-B0B5-AD7F1E425E80}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6332F0AE-C879-4838-B205-56F78E009A47} = {6332F0AE-C879-4838-B205-56F78E009A47}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bubbleslib", "src\game\bubbleslib.vcxproj", "{6332F0AE-C879-4838-B205-56F78E009A47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		MinSizeRel|Win32 = MinSizeRel|Win32
+		Release|Win32 = Release|Win32
+		RelWithDebInfo|Win32 = RelWithDebInfo|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97B55777-36B9-4E81-B0B5-AD7F1E425E80}.Debug|Win32.ActiveCfg = Debug|Win32
+		{97B55777-36B9-4E81-B0B5-AD7F1E425E80}.Debug|Win32.Build.0 = Debug|Win32
+		{97B55777-36B9-4E81-B0B5-AD7F1E425E80}.MinSizeRel|Win32.ActiveCfg = MinSizeRel|Win32
+		{97B55777-36B9-4E81-B0B5-AD7F1E425E80}.MinSizeRel|Win32.Build.0 = MinSizeRel|Win32
+		{97B55777-36B9-4E81-B0B5-AD7F1E425E80}.Release|Win32.ActiveCfg = Release|Win32
+		{97B55777-36B9-4E81-B0B5-AD7F1E425E80}.Release|Win32.Build.0 = Release|Win32
+		{97B55777-36B9-4E81-B0B5-AD7F1E425E80}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
+		{97B55777-36B9-4E81-B0B5-AD7F1E425E80}.RelWithDebInfo|Win32.Build.0 = RelWithDebInfo|Win32
+		{6332F0AE-C879-4838-B205-56F78E009A47}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6332F0AE-C879-4838-B205-56F78E009A47}.Debug|Win32.Build.0 = Debug|Win32
+		{6332F0AE-C879-4838-B205-56F78E009A47}.MinSizeRel|Win32.ActiveCfg = MinSizeRel|Win32
+		{6332F0AE-C879-4838-B205-56F78E009A47}.MinSizeRel|Win32.Build.0 = MinSizeRel|Win32
+		{6332F0AE-C879-4838-B205-56F78E009A47}.Release|Win32.ActiveCfg = Release|Win32
+		{6332F0AE-C879-4838-B205-56F78E009A47}.Release|Win32.Build.0 = Release|Win32
+		{6332F0AE-C879-4838-B205-56F78E009A47}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
+		{6332F0AE-C879-4838-B205-56F78E009A47}.RelWithDebInfo|Win32.Build.0 = RelWithDebInfo|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

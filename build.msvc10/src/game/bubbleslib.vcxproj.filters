@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\game\game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\game\GameObjectFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\game\visitors\CalcBubblesVisitor.cpp">
+      <Filter>Source Files\visitors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\game\visitors\ClickVisitor.cpp">
+      <Filter>Source Files\visitors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\game\visitors\DrawVisitor.cpp">
+      <Filter>Source Files\visitors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\game\visitors\IGameObjVisitor.cpp">
+      <Filter>Source Files\visitors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\game\visitors\UpdateVisitor.cpp">
+      <Filter>Source Files\visitors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\game\objects\Bubble.cpp">
+      <Filter>Source Files\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\game\objects\GameObject.cpp">
+      <Filter>Source Files\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\game\objects\Scene.cpp">
+      <Filter>Source Files\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\game\objects\Scoreboard.cpp">
+      <Filter>Source Files\objects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{84821BF0-A828-40FC-91F0-AD6DA70AFA8F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\visitors">
+      <UniqueIdentifier>{01B8C557-4791-4803-9A9B-F29E9B935932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\objects">
+      <UniqueIdentifier>{4D37AC61-3F69-44FA-BE14-6CB72C4972D2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
