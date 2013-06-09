@@ -81,7 +81,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>W:/voksoft/bubbles/src/starter.win32/./../game;W:/voksoft/bubbles/src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/starter.win32/./../game;../../../src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -95,14 +95,14 @@
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>Debug</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>W:/voksoft/bubbles/bin/Debug/bubbles.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>../../../bin/Debug/bubbles.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>W:/voksoft/bubbles/src/starter.win32/./../game;W:/voksoft/bubbles/src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/starter.win32/./../game;../../../src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>W:/voksoft/bubbles/src/starter.win32/./../game;W:/voksoft/bubbles/src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/starter.win32/./../game;../../../src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -114,8 +114,8 @@
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\game\Debug\bubbleslib.lib;glu32.lib;opengl32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>W:/voksoft/bubbles/build.msvc10/src/starter.win32/Debug/bubbles.lib</ImportLibrary>
-      <ProgramDataBaseFile>W:/voksoft/bubbles/bin/Debug/bubbles.pdb</ProgramDataBaseFile>
+      <ImportLibrary>../../../build.msvc10/src/starter.win32/Debug/bubbles.lib</ImportLibrary>
+      <ProgramDataBaseFile>../../../bin/Debug/bubbles.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
@@ -126,7 +126,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>W:/voksoft/bubbles/src/starter.win32/./../game;W:/voksoft/bubbles/src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/starter.win32/./../game;../../../src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -140,14 +140,14 @@
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>Release</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>W:/voksoft/bubbles/bin/Release/bubbles.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>../../../bin/Release/bubbles.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>W:/voksoft/bubbles/src/starter.win32/./../game;W:/voksoft/bubbles/src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/starter.win32/./../game;../../../src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>W:/voksoft/bubbles/src/starter.win32/./../game;W:/voksoft/bubbles/src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/starter.win32/./../game;../../../src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -159,8 +159,8 @@
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\game\Release\bubbleslib.lib;glu32.lib;opengl32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ImportLibrary>W:/voksoft/bubbles/build.msvc10/src/starter.win32/Release/bubbles.lib</ImportLibrary>
-      <ProgramDataBaseFile>W:/voksoft/bubbles/bin/Release/bubbles.pdb</ProgramDataBaseFile>
+      <ImportLibrary>../../../build.msvc10/src/starter.win32/Release/bubbles.lib</ImportLibrary>
+      <ProgramDataBaseFile>../../../bin/Release/bubbles.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
@@ -171,7 +171,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>W:/voksoft/bubbles/src/starter.win32/./../game;W:/voksoft/bubbles/src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/starter.win32/./../game;../../../src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -185,14 +185,14 @@
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>MinSizeRel</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>W:/voksoft/bubbles/bin/MinSizeRel/bubbles.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>../../../bin/MinSizeRel/bubbles.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>W:/voksoft/bubbles/src/starter.win32/./../game;W:/voksoft/bubbles/src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/starter.win32/./../game;../../../src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>W:/voksoft/bubbles/src/starter.win32/./../game;W:/voksoft/bubbles/src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/starter.win32/./../game;../../../src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -204,8 +204,8 @@
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\game\MinSizeRel\bubbleslib.lib;glu32.lib;opengl32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ImportLibrary>W:/voksoft/bubbles/build.msvc10/src/starter.win32/MinSizeRel/bubbles.lib</ImportLibrary>
-      <ProgramDataBaseFile>W:/voksoft/bubbles/bin/MinSizeRel/bubbles.pdb</ProgramDataBaseFile>
+      <ImportLibrary>../../../build.msvc10/src/starter.win32/MinSizeRel/bubbles.lib</ImportLibrary>
+      <ProgramDataBaseFile>../../../bin/MinSizeRel/bubbles.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
@@ -216,7 +216,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>W:/voksoft/bubbles/src/starter.win32/./../game;W:/voksoft/bubbles/src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/starter.win32/./../game;../../../src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -229,14 +229,14 @@
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>RelWithDebInfo</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>W:/voksoft/bubbles/bin/RelWithDebInfo/bubbles.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>../../../bin/RelWithDebInfo/bubbles.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>W:/voksoft/bubbles/src/starter.win32/./../game;W:/voksoft/bubbles/src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/starter.win32/./../game;../../../src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>W:/voksoft/bubbles/src/starter.win32/./../game;W:/voksoft/bubbles/src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/starter.win32/./../game;../../../src/starter.win32/./../tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -248,8 +248,8 @@
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\game\RelWithDebInfo\bubbleslib.lib;glu32.lib;opengl32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>W:/voksoft/bubbles/build.msvc10/src/starter.win32/RelWithDebInfo/bubbles.lib</ImportLibrary>
-      <ProgramDataBaseFile>W:/voksoft/bubbles/bin/RelWithDebInfo/bubbles.pdb</ProgramDataBaseFile>
+      <ImportLibrary>../../../build.msvc10/src/starter.win32/RelWithDebInfo/bubbles.lib</ImportLibrary>
+      <ProgramDataBaseFile>../../../bin/RelWithDebInfo/bubbles.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
@@ -264,7 +264,7 @@
     <ClCompile Include="..\..\..\src\starter.win32\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="W:/voksoft/bubbles/build.msvc10/src/game/bubbleslib.vcxproj">
+    <ProjectReference Include="../../../build.msvc10/src/game/bubbleslib.vcxproj">
       <Project>6332F0AE-C879-4838-B205-56F78E009A47</Project>
     </ProjectReference>
   </ItemGroup>
