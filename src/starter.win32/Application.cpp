@@ -39,7 +39,7 @@ int CApplication::Initialize(HINSTANCE hInstance, const char * szAppName, const 
 		return 1;
 	
 	// Инициализация
-	if ( 0 != Init(m_hWndMain) )
+	if ( 0 != Init() )
 		return 2;
 
 	return 0;
@@ -103,7 +103,19 @@ LRESULT CALLBACK CApplication::WndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPA
 			
 			break;
 
+		case WM_SIZING:
+			{
+				LPRECT lpRect = (LPRECT)lParam;
+				
+				if ( min(lpRect->bottom - lpRect->top, lpRect->right - lpRect->left) < 240 )
+				{
+					GetWindowRect(hWnd, lpRect);
+				}
+			}
+			break;
+
 		case WM_SIZE:
+			CApplication::instance().OnSize();
 			break;
 
 		case WM_DESTROY:
@@ -116,18 +128,22 @@ LRESULT CALLBACK CApplication::WndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPA
 
 
 // Инициализация
-int CApplication::Init(HWND hWndMain)
+int CApplication::Init()
 {
 	int iRet = 0;
 	m_pGraphics.reset(new CGraphics());
 	
-	if ( 0 != (iRet = m_pGraphics->Init(hWndMain)) )
+	if ( 0 != (iRet = m_pGraphics->Init(m_hWndMain)) )
 		return iRet;
 
 	RECT rect;
-	GetClientRect(hWndMain, &rect);
+	GetClientRect(m_hWndMain, &rect);
 
-	m_pGame.reset(new CGame());
+	if (!m_pGame.get())
+	{
+		m_pGame.reset(new CGame());
+	}
+
 	m_pGame->Init(rect.right - rect.left, rect.bottom - rect.top);
 
 	return iRet;
@@ -187,6 +203,12 @@ void CApplication::OnIdle(void)
 void CApplication::ReleaseAll(void)
 {
 //	m_graphics.ReleaseOpenGL();
+}
+
+
+void CApplication::OnSize(void)
+{
+	Init();
 }
 
 

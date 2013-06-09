@@ -23,10 +23,11 @@ public:
 	int Run(void);
 
 private:
+	void OnSize(void);
 	void OnLBMouseClick(POINT pt);
 	HWND CreateMainWindow(LPCSTR pWindowName, int nWidth, int nHeight, int nCmdShow, bool bIsOpenGL);
 	static LRESULT CALLBACK WndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
-	int Init(HWND hWndMain);
+	int Init(void);
 	void OnIdle(void);
 	double GetGameTimePassed(void);
 	void ReleaseAll(void);
