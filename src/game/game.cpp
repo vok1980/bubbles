@@ -9,16 +9,16 @@
 #include <math.h>
 
 #include "game.h"
+#include "GameObjectFactory.h"
 
 #include "color.h"
 
 
 
 
-CGame::CGame() : 
-	m_iWidth(0),
-	m_iHeight(0)
+CGame::CGame() 
 {
+	m_pObjectFactory.reset(new CGameObjectFactory());
 }
 
 
@@ -29,8 +29,8 @@ CGame::~CGame()
 
 void CGame::Init(int iWidth, int iHeight)
 {
-	m_iWidth = iWidth; 
-	m_iHeight = iHeight;
+	m_aSize[OD_WIDTH] = iWidth;
+	m_aSize[OD_HEIGHT] = iHeight;
 }
 
 
@@ -78,23 +78,21 @@ void CGame::DrawFrame(void)
 	//	glVertex3f(-0.7f,  0.2f, 0.0f);
 	//glEnd();
 
-	assert(m_iHeight > 0);
-	assert(m_iWidth > 0);
-
 	glPushMatrix();
 
 	GLfloat szMainMatrix[] = 
 		{
-			2.0/m_iWidth,		0.0,			0.0,			0.0,
-			0.0,				2.0/m_iHeight,	0.0,			0.0,
-			0.0,				0.0,			1.0,			0.0,
-			-1.0,				-1.0,			0.0,			1.0
+			2.0/GetDimention(OD_WIDTH),		0.0,							0.0,			0.0,
+			0.0,							-2.0/GetDimention(OD_HEIGHT),	0.0,			0.0,
+			0.0,							0.0,							1.0,			0.0,
+			-1.0,							+1.0,							0.0,			1.0
 		};
 
 	glMultMatrixf(szMainMatrix);
 
-	DrawCircle(300, 200, 0, 100, SColor(255, 0, 20, 200) );
-	DrawCircle(480/2, 320, 0, 50, SColor(0, 200, 50, 1));
+	DrawCircle(0, 0, 0, 100, SColor(255, 0, 20, 200) ); 
+	DrawCircle(GetDimention(OD_WIDTH)/2, GetDimention(OD_HEIGHT)/2, 0, 50, SColor(0, 200, 50, 1));
+	DrawCircle(200, 200, 0, 100, SColor(0, 0, 255, 10) ); 
 
 	glPopMatrix();
 }
@@ -102,6 +100,15 @@ void CGame::DrawFrame(void)
 
 void CGame::CalcScene(void)
 {
+}
+
+
+BoardSize_t CGame::GetDimention(ObjectDimention dim)
+{
+	BoardSize_t &refSize = m_aSize[dim];
+
+	assert(refSize > 0);
+	return refSize;
 }
 
 

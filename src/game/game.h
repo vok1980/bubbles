@@ -2,8 +2,14 @@
 #pragma once
 
 
+#include <memory>
+#include <map>
+#include "IBoardSize.h"
 
-class CGame
+
+class CGameObjectFactory;
+
+class CGame : public IBoardSize
 {
 public:
 	CGame();
@@ -17,8 +23,10 @@ private:
 	void CalcScene(void);
 	void DrawFrame(void);
 
+	BoardSize_t GetDimention(ObjectDimention);
+
 private:
-	int m_iWidth; 
-	int m_iHeight;
+	std::map<ObjectDimention, BoardSize_t> m_aSize;
+	std::auto_ptr<CGameObjectFactory> m_pObjectFactory;
 };
 
