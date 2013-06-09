@@ -19,6 +19,13 @@ CGameObject::CGameObject(CGameObject *pParent) :
 CGameObject::~CGameObject()
 {
 	DetachFromParent();
+
+	std::for_each(m_aObjects.begin(), m_aObjects.end(),
+		[](const ObjectsColl_t::value_type &refVal)
+		{
+			delete refVal;
+		}
+	);
 }
 
 
