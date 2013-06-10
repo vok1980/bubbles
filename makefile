@@ -1,3 +1,4 @@
+TOOLCHAIN:=x
  
 all:
 	@echo use android target to build android
@@ -9,9 +10,25 @@ android:
 
 
 android.cmake:
+	make check.toolchain
+
 	mkdir -p build.android
-	cd build.android && cmake -DANDROID=true ..
+	cd build.android && \
+		PATH="$(TOOLCHAIN)/bin:$(PATH)" \
+		LDFLAGS="" \
+		CFLAGS="-DANDROID -O3" \
+		CXXFLAGS="-DANDROID -O4" \
+		CC=arm-linux-androideabi-gcc CXX=arm-linux-androideabi-g++ \
+		cmake ..
+
+### -DANDROID=true
 
 
 android.build:
 	cd build.android && make
+
+
+check.toolchain:
+	@if [ -d $(TOOLCHAIN)/bin ] ; then true ; \
+	else echo "Couldn't locate android NDK toolchain directory, please invoke make with \"make TOOLCHAIN=/path/to/android/ndk/toolchain ...\"" ; exit 1 ; \
+	fi
