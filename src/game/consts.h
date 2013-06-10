@@ -3,7 +3,7 @@
 
 
 
-#define MAX_BUBBLES_COUNT_PER_AREA (10.0 / (640.0 * 480.0))
+#define MAX_BUBBLES_COUNT_PER_AREA (9.0 / (640.0 * 480.0))
 
 #define MIN_RADIUS 12
 #define MAX_RADIUS 65
