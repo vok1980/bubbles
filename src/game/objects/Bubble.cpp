@@ -18,24 +18,38 @@ CBubble::CBubble(CGameObject *pParent, BoardSize_t iPosX, BoardSize_t iPosY, Boa
 }
 
 
+/**
+ *	Changing object position due to its velocity and elapced time
+ */
 void CBubble::Move(float fDeltaTime)
 {
 	m_iPosY += GetVelocity() * fDeltaTime;
 }
 
 
+/**
+ *	Calculating points for bursting the bubble, 
+ *	based on it's velocity. 
+ */
 long CBubble::GetPoints(void) const
 {
 	return GetVelocity() / 10;
 }
 
 
+/** 
+ *	Calculating bubbles velocity, based on its, size.
+ *	The bigger size -- the sloweer bubble.
+ */
 float CBubble::GetVelocity(void) const
 {
 	return VELOCITY_KOEFF / (m_iRadius * m_iRadius);
 }
 
 
+/**
+ *	Part of Visitor pattern
+ */
 void CBubble::AcceptVisitor(IGameObjVisitor *pVisitor)
 {
 	pVisitor->Visit(this);
@@ -43,12 +57,18 @@ void CBubble::AcceptVisitor(IGameObjVisitor *pVisitor)
 }
 
 
+/**
+ *	Characteristic dimension of the object
+ */
 BoardSize_t CBubble::GetDimention(ObjectDimention)
 {
 	return m_iRadius * 2;
 }
 
 
+/** 
+ *	Checks it bubble are still on the scene.
+ */
 bool CBubble::IsValid(void) const
 {
 	assert(NULL != GetParent());
@@ -65,8 +85,9 @@ bool CBubble::IsValid(void) const
 }
 
 
-void CBubble::GetColor(const SColor &refColor) const 
+void CBubble::GetColor(SColor &refColor) const 
 {
+	refColor = m_color;
 }
 
 

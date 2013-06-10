@@ -18,10 +18,11 @@ public:
 
 public:
 	virtual void AcceptVisitor(IGameObjVisitor*);
+
 	virtual BoardSize_t GetDimention(ObjectDimention);
 	bool IsValid(void) const;
 	void GetPosition(BoardSize_t &refPosX, BoardSize_t &refPosY, BoardSize_t &refRadius) const;
-	void GetColor(const SColor &refColor) const; 
+	void GetColor(SColor &refColor) const; 
 	long GetPoints(void) const;
 	void Move(float fDeltaTime);
 
