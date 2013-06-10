@@ -7,9 +7,13 @@
 
 
 
+/** 
+ *	Game object that representats a bubble.
+ *	Incapsulates data about size, position and color of the bubble.
+ */
 class CBubble : public CGameObject
 {
-	friend class CDrawVisitor;
+//	friend class CDrawVisitor;
 	friend class CUpdateVisitor;
 
 public:
@@ -20,10 +24,11 @@ public:
 	virtual BoardSize_t GetDimention(ObjectDimention);
 	bool IsValid(void) const;
 	void GetPosition(BoardSize_t &refPosX, BoardSize_t &refPosY, BoardSize_t &refRadius) const;
-	long GetPoints(void);
+	void GetColor(const SColor &refColor) const; 
+	long GetPoints(void) const;
 
 private:
-	float GetVelocity(void);
+	float GetVelocity(void) const;
 
 private:
 	BoardSize_t m_iPosX;

@@ -48,16 +48,23 @@ void CDrawVisitor::Visit(CScoreboard *pBubble)
 void CDrawVisitor::Visit(CBubble *pBubble)
 {
 	glPushMatrix();
-	glTranslatef(pBubble->m_iPosX, pBubble->m_iPosY, 0);
+
+	BoardSize_t iPosX;
+	BoardSize_t iPosY;
+	BoardSize_t iRadius;
+
+	pBubble->GetPosition(iPosX, iPosY, iRadius);
+	glTranslatef(iPosX, iPosY, 0);
 
 //	wglUseFontBitmaps
 
 	GLfloat theta;
 	GLfloat pi     = acos(-1.0);
-	GLfloat radius = pBubble->m_iRadius; // радиус
+	GLfloat radius = iRadius; // радиус
 	GLfloat step   = 2.0f; // чем больше шаг тем хуже диск
 
-	SColor &color = pBubble->m_color;
+	SColor color;
+	pBubble->GetColor(color);
 
 	// рисуем диск по часовой стрелки GL_CW
 	glBegin(GL_TRIANGLE_FAN);

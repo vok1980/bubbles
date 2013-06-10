@@ -18,13 +18,13 @@ CBubble::CBubble(CGameObject *pParent, BoardSize_t iPosX, BoardSize_t iPosY, Boa
 }
 
 
-long CBubble::GetPoints(void)
+long CBubble::GetPoints(void) const
 {
 	return GetVelocity() / 10;
 }
 
 
-float CBubble::GetVelocity(void)
+float CBubble::GetVelocity(void) const
 {
 	return VELOCITY_KOEFF / (m_iRadius * m_iRadius);
 }
@@ -58,6 +58,10 @@ bool CBubble::IsValid(void) const
 	return true;	
 }
 
+
+void CBubble::GetColor(const SColor &refColor) const 
+{
+}
 
 
 void CBubble::GetPosition(BoardSize_t &refPosX, BoardSize_t &refPosY, BoardSize_t &refRadius) const
