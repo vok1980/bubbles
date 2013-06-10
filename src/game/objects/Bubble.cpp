@@ -13,8 +13,15 @@ CBubble::CBubble(CGameObject *pParent, BoardSize_t iPosX, BoardSize_t iPosY, Boa
 	m_iRadius(dRadius),
 	m_iPosX(iPosX),
 	m_iPosY(iPosY),
-	m_color(refColor)
+	m_color(refColor),
+	m_fVelocity(0.0f)
 {
+
+/* 
+ *	Calculating bubbles velocity, based on its, size.
+ *	The bigger size -- the sloweer bubble.
+ */
+	m_fVelocity = VELOCITY_PER_1_DIV_RAD_2_KOEFF / (m_iRadius * m_iRadius);
 }
 
 
@@ -38,12 +45,11 @@ long CBubble::GetPoints(void) const
 
 
 /** 
- *	Calculating bubbles velocity, based on its, size.
- *	The bigger size -- the sloweer bubble.
+  *	Returns bubble velocity
  */
 float CBubble::GetVelocity(void) const
 {
-	return VELOCITY_PER_1_DIV_RAD_2_KOEFF / (m_iRadius * m_iRadius);
+	return m_fVelocity;
 }
 
 

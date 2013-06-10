@@ -34,4 +34,5 @@ private:
 	BoardSize_t m_iPosY;
 	BoardSize_t m_iRadius;
 	SColor m_color;
+	float m_fVelocity;
 };
