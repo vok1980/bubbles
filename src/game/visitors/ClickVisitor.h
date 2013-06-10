@@ -20,7 +20,7 @@ class CScoreboard;
 class CClickVisitor : public IGameObjVisitor
 {
 public:
-	CClickVisitor(const std::list< SPoint > &_aClicksColl);
+	CClickVisitor(std::list< SPoint > &_aClicksColl);
 	virtual ~CClickVisitor();
 
 public:

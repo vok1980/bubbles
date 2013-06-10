@@ -43,5 +43,7 @@ private:
 	CScoreboard *m_pScoreboard;			///< Should not delete this pointer
 
 	std::list< SPoint > m_aClicks;
+	long m_iBubblesCountLimit;
+	float m_fLastCreationTimeout;
 };
 

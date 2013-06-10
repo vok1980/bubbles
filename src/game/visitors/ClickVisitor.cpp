@@ -10,8 +10,8 @@
 
 
 
-CClickVisitor::CClickVisitor(const std::list< SPoint > &_aClicksColl) :
-	m_aClicksColl(_aClicksColl.begin(), _aClicksColl.end())
+CClickVisitor::CClickVisitor(std::list< SPoint > &_aClicksColl) :
+	m_aClicksColl( _aClicksColl.begin(), std::unique(_aClicksColl.begin(), _aClicksColl.end()) )
 {	
 }
 

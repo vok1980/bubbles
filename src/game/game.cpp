@@ -7,6 +7,7 @@
 
 #include <cassert>
 #include <math.h>
+#include <algorithm>
 
 #include "game.h"
 #include "GameObjectFactory.h"
@@ -25,7 +26,9 @@
 
 
 CGame::CGame() :
-	m_pScoreboard(NULL)
+	m_pScoreboard(NULL),
+	m_iBubblesCountLimit(0),
+	m_fLastCreationTimeout(0.0f)
 {
 	m_pObjectFactory.reset(new CGameObjectFactory());
 	m_pMainScene.reset(new CScene(NULL, this));
@@ -108,6 +111,10 @@ void CGame::CalcScene(float fDeltaTime)
 		visClick.ChargePoints(m_pScoreboard);
 	}
 
+	m_fLastCreationTimeout += fDeltaTime;
+
+	/// Creating no more than one bubble in BUBBLES_CREATION_TIMEOUT 
+	if ( m_fLastCreationTimeout > BUBBLES_CREATION_TIMEOUT )
 	{		
 		///	Calculates the number of actual bubbles on the scene
 		
@@ -119,6 +126,7 @@ void CGame::CalcScene(float fDeltaTime)
 		if (visCalc.GetCount() < GetMaxBoubblesCount())
 		{
 			m_pObjectFactory->CreateBubble(m_pMainScene.get());
+			m_fLastCreationTimeout = 0.0f;
 		}
 	}
 
@@ -144,17 +152,19 @@ void CGame::OnMouseClick(const SPoint &point)
 }
 
 
+/**
+ *	Calculating max allowed boubles count for current scene size
+ */
 long CGame::GetMaxBoubblesCount(bool bRecalc /*= false*/)
 {
 	static double iBubblesPerArea = MAX_BUBBLES_COUNT_PER_AREA;
-	static long iMaxCount = 0;
-	
-	if (bRecalc || 0 == iMaxCount)
+		
+	if (bRecalc || 0 == m_iBubblesCountLimit)
 	{
-		iMaxCount = (long)(iBubblesPerArea * GetDimention(OD_WIDTH) * GetDimention(OD_HEIGHT));
-		iMaxCount = min(ABSOLUTE_BUBBLES_LIMIT, iMaxCount);
+		m_iBubblesCountLimit = (long)(iBubblesPerArea * GetDimention(OD_WIDTH) * GetDimention(OD_HEIGHT));
+		m_iBubblesCountLimit = min(ABSOLUTE_BUBBLES_LIMIT, m_iBubblesCountLimit);
 	}
 
-	return iMaxCount;
+	return m_iBubblesCountLimit;
 }
 
