@@ -8,6 +8,11 @@ class CBubble;
 class CScoreboard;
 
 
+/**
+ *	Visitor interface for 
+ *	visitor pattern
+ *	http://www.oodesign.com/visitor-pattern.html
+ */
 class IGameObjVisitor
 {
 public:

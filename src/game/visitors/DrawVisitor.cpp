@@ -19,12 +19,20 @@ CDrawVisitor::CDrawVisitor()
 {}
 
 
+/**
+ *	Nothing to draw for CScene,
+ *	but we have to do glPushMatrix() 
+ *	due to PostVisit implementation
+ */
 void CDrawVisitor::Visit(CScene*)
 {
 	glPushMatrix();
 }
 
 
+/**
+ *	Draw a simple raster text output for scores
+ */
 void CDrawVisitor::Visit(CScoreboard *pBubble)
 {
 	glPushMatrix();
@@ -45,6 +53,9 @@ void CDrawVisitor::Visit(CScoreboard *pBubble)
 }
 
 
+/**
+ *	Draw a bubble 
+ */
 void CDrawVisitor::Visit(CBubble *pBubble)
 {
 	glPushMatrix();
@@ -56,17 +67,15 @@ void CDrawVisitor::Visit(CBubble *pBubble)
 	pBubble->GetPosition(iPosX, iPosY, iRadius);
 	glTranslatef(iPosX, iPosY, 0);
 
-//	wglUseFontBitmaps
-
 	GLfloat theta;
 	GLfloat pi     = acos(-1.0);
-	GLfloat radius = iRadius; // радиус
-	GLfloat step   = 2.0f; // чем больше шаг тем хуже диск
+	GLfloat radius = iRadius; 
+	GLfloat step   = 2.0f; 
 
 	SColor color;
 	pBubble->GetColor(color);
 
-	// рисуем диск по часовой стрелки GL_CW
+	// drawing a circle in triangles
 	glBegin(GL_TRIANGLE_FAN);
 		
 		glColor4ub(color.R, color.G, color.B, color.A);
@@ -81,6 +90,10 @@ void CDrawVisitor::Visit(CBubble *pBubble)
 }
 
 
+/**
+ *	PostVisit should do glPopMatrix() due to 
+ *	all Visits implemetations
+ */
 void CDrawVisitor::PostVisit(CGameObject*)
 {
 	glPopMatrix();

@@ -6,6 +6,10 @@
 #include "IGameObjVisitor.h"
 
 
+/**
+ *	This visitor updates game objects 
+ *	for fDeltaTime time elapsed 
+ */
 class CUpdateVisitor : public IGameObjVisitor
 {
 public:

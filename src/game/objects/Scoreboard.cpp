@@ -30,6 +30,9 @@ void CScoreboard::AddScore(score_t iScore)
 }
 
 
+/**
+ *	Part of Visitor pattern
+ */
 void CScoreboard::AcceptVisitor(IGameObjVisitor *pVisitor)
 {
 	pVisitor->Visit(this);

@@ -15,6 +15,9 @@ class CScene;
 class CScoreboard;
 
 
+/**
+ *	The main game class
+ */
 class CGame : public IDimension
 {
 public:
@@ -31,6 +34,7 @@ private:
 	void DrawFrame(void);
 
 	BoardSize_t GetDimention(ObjectDimention);
+	long GetMaxBoublesCount(void);
 
 private:
 	std::map<ObjectDimention, BoardSize_t> m_aSize;

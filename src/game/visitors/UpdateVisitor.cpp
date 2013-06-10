@@ -14,6 +14,9 @@ CUpdateVisitor::CUpdateVisitor(float fDeltaTime) :
 }
 
 
+/**
+ *	Deleting unvalid objects on destruction
+ */
 CUpdateVisitor::~CUpdateVisitor()
 { 
 	std::for_each(m_aUnvalidItems.begin(), m_aUnvalidItems.end(),
@@ -25,16 +28,26 @@ CUpdateVisitor::~CUpdateVisitor()
 }
 
 
+/**
+ *	Do nothing
+ */
 void CUpdateVisitor::Visit(CScene*)
 {
 }
 
 
+/**
+ *	Do nothing
+ */
 void CUpdateVisitor::Visit(CScoreboard *pBubble)
 {
 }
 
 
+/**
+ *	Moving bubbles and collecting unvalid ones.
+ *	Unvalid are thouse, which have leaved the scene.
+ */
 void CUpdateVisitor::Visit(CBubble *pBubble)
 {
 	pBubble->Move(m_fDeltaTime);
@@ -46,6 +59,9 @@ void CUpdateVisitor::Visit(CBubble *pBubble)
 }
 
 
+/**
+ *	Do nothing
+ */
 void CUpdateVisitor::PostVisit(CGameObject*)
 {
 }

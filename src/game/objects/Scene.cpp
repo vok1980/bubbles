@@ -15,6 +15,9 @@ CScene::~CScene()
 {}
 
 
+/**
+ *	Part of Visitor pattern
+ */
 void CScene::AcceptVisitor(IGameObjVisitor *pVisitor)
 {
 	pVisitor->Visit(this);

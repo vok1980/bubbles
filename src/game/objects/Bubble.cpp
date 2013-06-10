@@ -4,8 +4,8 @@
 #include "Bubble.h"
 #include "IGameObjVisitor.h"
 
+#include "consts.h"
 
-#define VELOCITY_KOEFF 300000
 
 
 CBubble::CBubble(CGameObject *pParent, BoardSize_t iPosX, BoardSize_t iPosY, BoardSize_t dRadius, SColor &refColor) : 
@@ -33,7 +33,7 @@ void CBubble::Move(float fDeltaTime)
  */
 long CBubble::GetPoints(void) const
 {
-	return GetVelocity() / 10;
+	return GetVelocity() * POINTS_PER_VELOCITY;
 }
 
 
@@ -43,7 +43,7 @@ long CBubble::GetPoints(void) const
  */
 float CBubble::GetVelocity(void) const
 {
-	return VELOCITY_KOEFF / (m_iRadius * m_iRadius);
+	return VELOCITY_PER_1_DIV_RAD_2_KOEFF / (m_iRadius * m_iRadius);
 }
 
 

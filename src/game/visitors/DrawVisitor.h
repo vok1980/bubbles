@@ -5,6 +5,9 @@
 
 
 
+/**
+ *	Visitor that draws OpenGL objects
+ */
 class CDrawVisitor : public IGameObjVisitor
 {
 public:
