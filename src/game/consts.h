@@ -16,3 +16,8 @@
 
 #define VELOCITY_PER_1_DIV_RAD_2_KOEFF 300000
 #define POINTS_PER_VELOCITY 0.1
+
+
+
+#define min(x, y) (x < y ? x : y)  
+#define max(x, y) (x > y ? x : y)

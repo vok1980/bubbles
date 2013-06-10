@@ -6,13 +6,13 @@
 
 struct SColor
 {
-	SColor() :
+	SColor() : 		
 		R(0), G(0), B(0), A(0)
 	{}
 
 
-	SColor(GLubyte _R, GLubyte _G, GLubyte _B, GLubyte _A) :
-		R(_R), G(_G), B(_B), A(_A)
+	SColor(GLubyte _r, GLubyte _g, GLubyte _b, GLubyte _a) :		
+				R(_r), G(_g), B(_b), A(_a)
 	{}
 
 	GLubyte R;

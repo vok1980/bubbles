@@ -10,7 +10,6 @@
 
 
 
-
 CGameObjectFactory::CGameObjectFactory()
 {
 	/// initialize randomizer with current time
@@ -32,7 +31,7 @@ CGameObject* CGameObjectFactory::CreateBubble(CGameObject *pParent)
 	/// Create random size in range [MIN_RADIUS, MAX_RADIUS],
 	///	but referring current scene size
 	BoardSize_t iBubbleMaxRadius = min (pParent->GetDimention(OD_WIDTH), pParent->GetDimention(OD_HEIGHT)) / 7;
-	iBubbleMaxRadius = min (iBubbleMaxRadius, MAX_RADIUS);
+	iBubbleMaxRadius = min(MAX_RADIUS, iBubbleMaxRadius);
 	BoardSize_t iBubbleMinRadius = max (MIN_RADIUS, iBubbleMaxRadius / 25);
 	BoardSize_t iRadius = iBubbleMinRadius + (rand() % (int)(iBubbleMaxRadius - iBubbleMinRadius));
 

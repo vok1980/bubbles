@@ -2,10 +2,14 @@
 #include "DrawVisitor.h"
 
 #include <math.h>
+#include <cstdio>
+#include <string>
 
 #include "platformGL.h"
 #include "Bubble.h"
 #include "Scoreboard.h"
+
+#include "platformGL.h"
 
 
 
@@ -37,14 +41,16 @@ void CDrawVisitor::Visit(CScoreboard *pBubble)
 	glTranslatef(pBubble->GetDimention(OD_WIDTH)/5, iParentHeight - 2 * pBubble->GetDimention(OD_HEIGHT), 0);
 
 	char szOutText[256];
-	sprintf_s(szOutText, "%u", pBubble->GetScore());
+	sprintf(szOutText, "%u", pBubble->GetScore());
 	std::string strText(szOutText);
 	
-	glColor3f(1, 1, 1);
+#ifndef ANDROID
+	glColor4f(1, 1, 1, 1);
 	glRasterPos2i(10, 10); 
-	glListBase(1000); 
+	glListBase(1000);
 	
-	glCallLists(strText.size(), GL_UNSIGNED_BYTE, strText.c_str()); 
+	glCallLists(strText.size(), GL_UNSIGNED_BYTE, strText.c_str());
+#endif	
 }
 
 
