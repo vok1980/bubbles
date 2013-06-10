@@ -85,12 +85,18 @@ bool CBubble::IsValid(void) const
 }
 
 
+/**
+ *	REturns the bubble color
+ */
 void CBubble::GetColor(SColor &refColor) const 
 {
 	refColor = m_color;
 }
 
 
+/**
+ *	Returns the bubble position & size
+ */
 void CBubble::GetPosition(BoardSize_t &refPosX, BoardSize_t &refPosY, BoardSize_t &refRadius) const
 {
 	refPosX = m_iPosX; 
