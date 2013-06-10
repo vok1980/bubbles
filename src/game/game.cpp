@@ -43,8 +43,10 @@ CGame::~CGame()
  */
 void CGame::Init(long iWidth, long iHeight)
 {
-	m_aSize[OD_WIDTH] = iWidth;
-	m_aSize[OD_HEIGHT] = iHeight;
+	m_aSize[OD_WIDTH] = (BoardSize_t)iWidth;
+	m_aSize[OD_HEIGHT] = (BoardSize_t)iHeight;
+
+	GetMaxBoubblesCount(true);
 }
 
 
@@ -114,7 +116,7 @@ void CGame::CalcScene(float fDeltaTime)
 
 		/// If boublle count less than allawed, create more
 		
-		if (visCalc.GetCount() < GetMaxBoublesCount())
+		if (visCalc.GetCount() < GetMaxBoubblesCount())
 		{
 			m_pObjectFactory->CreateBubble(m_pMainScene.get());
 		}
@@ -132,8 +134,6 @@ void CGame::CalcScene(float fDeltaTime)
 BoardSize_t CGame::GetDimention(ObjectDimention dim)
 {
 	BoardSize_t &refSize = m_aSize[dim];
-
-	assert(refSize > 0);
 	return refSize;
 }
 
@@ -144,8 +144,17 @@ void CGame::OnMouseClick(const SPoint &point)
 }
 
 
-long CGame::GetMaxBoublesCount(void)
+long CGame::GetMaxBoubblesCount(bool bRecalc /*= false*/)
 {
-	return MAX_BUBBLES_COUNT_PER_AREA * GetDimention(OD_WIDTH) * GetDimention(OD_HEIGHT);
+	static double iBubblesPerArea = MAX_BUBBLES_COUNT_PER_AREA;
+	static long iMaxCount = 0;
+	
+	if (bRecalc || 0 == iMaxCount)
+	{
+		iMaxCount = (long)(iBubblesPerArea * GetDimention(OD_WIDTH) * GetDimention(OD_HEIGHT));
+		iMaxCount = min(ABSOLUTE_BUBBLES_LIMIT, iMaxCount);
+	}
+
+	return iMaxCount;
 }
 

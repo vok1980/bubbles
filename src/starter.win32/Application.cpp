@@ -186,7 +186,7 @@ int CApplication::Run(void)
 }
 
 
-double CApplication::GetGameTimePassed(void)
+float CApplication::GetGameTimePassed(void)
 {
 	clock_t clocks = clock();
 
@@ -196,7 +196,7 @@ double CApplication::GetGameTimePassed(void)
 		m_clocksLast = clocks;
 	}
 
-	double dRes = (double)(clocks - m_clocksLast) / CLOCKS_PER_SEC;
+	float dRes = (float)(clocks - m_clocksLast) / CLOCKS_PER_SEC;
 	m_clocksLast = clocks;
 	
    	return dRes;
@@ -206,7 +206,7 @@ double CApplication::GetGameTimePassed(void)
 // Функция, вызывающаяся при пустой очереди сообщений
 void CApplication::OnIdle(void)
 {	
-	double dDeltaTime = GetGameTimePassed();
+	float dDeltaTime = GetGameTimePassed();
 
 	m_pGraphics->Clear();
 	m_pGame->OnGameLoopTick(dDeltaTime);

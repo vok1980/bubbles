@@ -16,7 +16,7 @@ CGameObjectFactory::CGameObjectFactory()
 	/// initialize randomizer with current time
 	time_t ltime;
 	time(&ltime);
-	srand(ltime);
+	srand((unsigned int)ltime);
 }
 
 

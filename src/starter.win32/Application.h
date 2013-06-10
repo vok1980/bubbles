@@ -30,7 +30,7 @@ private:
 	static LRESULT CALLBACK WndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
 	int Init(void);
 	void OnIdle(void);
-	double GetGameTimePassed(void);
+	float GetGameTimePassed(void);
 	void ReleaseAll(void);
 
 private:

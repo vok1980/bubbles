@@ -68,9 +68,9 @@ void CDrawVisitor::Visit(CBubble *pBubble)
 	glTranslatef(iPosX, iPosY, 0);
 
 	GLfloat theta;
-	GLfloat pi     = acos(-1.0);
+	GLfloat pi     = (GLfloat)acos(-1.0);
 	GLfloat radius = iRadius; 
-	GLfloat step   = 2.0f; 
+	GLfloat step   = 8.0f; ///< 8 is enough to look like a circle
 
 	SColor color;
 	pBubble->GetColor(color);

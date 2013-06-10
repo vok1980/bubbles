@@ -33,7 +33,7 @@ void CBubble::Move(float fDeltaTime)
  */
 long CBubble::GetPoints(void) const
 {
-	return GetVelocity() * POINTS_PER_VELOCITY;
+	return (long)(GetVelocity() * POINTS_PER_VELOCITY);
 }
 
 

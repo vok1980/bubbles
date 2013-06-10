@@ -34,7 +34,7 @@ private:
 	void DrawFrame(void);
 
 	BoardSize_t GetDimention(ObjectDimention);
-	long GetMaxBoublesCount(void);
+	long GetMaxBoubblesCount(bool bRecalc = false);
 
 private:
 	std::map<ObjectDimention, BoardSize_t> m_aSize;
