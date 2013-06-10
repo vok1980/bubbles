@@ -1,5 +1,6 @@
 
 #include <algorithm>
+#include <math.h>
 
 #include "ClickVisitor.h"
 

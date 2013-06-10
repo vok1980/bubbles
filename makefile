@@ -16,8 +16,8 @@ android.cmake:
 	cd build.android && \
 		PATH="$(TOOLCHAIN)/bin:$(PATH)" \
 		LDFLAGS="" \
-		CFLAGS="-DANDROID -O3" \
-		CXXFLAGS="-DANDROID -O4" \
+		CFLAGS="-DANDROID -O0" \
+		CXXFLAGS="-DANDROID -O0 -std=c++11" \
 		CC=arm-linux-androideabi-gcc CXX=arm-linux-androideabi-g++ \
 		cmake ..
 

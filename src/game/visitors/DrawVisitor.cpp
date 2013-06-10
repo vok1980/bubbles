@@ -75,7 +75,7 @@ void CDrawVisitor::Visit(CBubble *pBubble)
 
 	SColor color;
 	pBubble->GetColor(color);
-
+#ifndef ANDROID
 	// drawing a circle in triangles
 	glBegin(GL_TRIANGLE_FAN);
 		
@@ -88,6 +88,7 @@ void CDrawVisitor::Visit(CBubble *pBubble)
 		}
 
 	glEnd();
+#endif		
 }
 
 
