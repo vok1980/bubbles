@@ -121,6 +121,8 @@ void CGame::CalcScene(float fDeltaTime)
 	}
 
 	{
+		/// Update game objects
+
 		CUpdateVisitor visUpdate(fDeltaTime);
 		m_pMainScene->AcceptVisitor(&visUpdate);
 	}

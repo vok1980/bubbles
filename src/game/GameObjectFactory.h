@@ -3,9 +3,11 @@
 
 
 class CGameObject;
-class IBoardSize;
 
 
+/**
+ *	Factory for the bubbles
+ */
 class CGameObjectFactory
 {
 public:
