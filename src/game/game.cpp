@@ -157,7 +157,7 @@ void CGame::OnMouseClick(const SPoint &point)
  */
 long CGame::GetMaxBoubblesCount(bool bRecalc /*= false*/)
 {
-	static double iBubblesPerArea = MAX_BUBBLES_COUNT_PER_AREA;
+	static const double iBubblesPerArea = MAX_BUBBLES_COUNT_PER_AREA;
 		
 	if (bRecalc || 0 == m_iBubblesCountLimit)
 	{
