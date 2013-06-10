@@ -1,14 +1,9 @@
 
 #include "DrawVisitor.h"
 
-#ifdef WIN32
-#include <Windows.h>
-#endif
-
-#include <GL/gl.h>
 #include <math.h>
 
-
+#include "platformGL.h"
 #include "Bubble.h"
 #include "Scoreboard.h"
 

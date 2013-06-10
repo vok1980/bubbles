@@ -1,8 +1,7 @@
 
-#include <windows.h>
-#include <GL/gl.h>
-
 #include "Graphics.h"
+
+#include "platformGL.h"
 
 
 
