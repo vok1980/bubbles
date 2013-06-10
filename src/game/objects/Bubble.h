@@ -13,7 +13,6 @@
  */
 class CBubble : public CGameObject
 {
-//	friend class CDrawVisitor;
 	friend class CUpdateVisitor;
 
 public:
