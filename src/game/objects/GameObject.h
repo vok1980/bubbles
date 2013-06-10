@@ -9,6 +9,10 @@
 class IGameObjVisitor;
 
 
+/**
+ *	Base class for all game objects
+ *	e.g. CBubbles, CScene, etc
+ */
 class CGameObject : public IDimension
 {
 public:

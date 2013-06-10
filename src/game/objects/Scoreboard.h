@@ -8,6 +8,9 @@
 typedef unsigned long score_t;
 
 
+/**
+ *	Game object for score output
+ */
 class CScoreboard : public CGameObject
 {
 public:

@@ -5,6 +5,9 @@
 #include "GameObject.h"
 
 
+/**
+ *	Scene game object
+ */
 class CScene : public CGameObject
 {
 public:

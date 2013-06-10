@@ -37,6 +37,9 @@ void CScoreboard::AcceptVisitor(IGameObjVisitor *pVisitor)
 }
 
 
+/**
+ *	Don't cnow how to calc text dimention, so some evristic value used.
+ */
 BoardSize_t CScoreboard::GetDimention(ObjectDimention)
 {
 	return 15;
