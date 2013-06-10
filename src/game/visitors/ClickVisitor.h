@@ -3,6 +3,7 @@
 
 #include <list>
 #include <vector>
+#include <set>
 
 #include "IGameObjVisitor.h"
 
@@ -11,6 +12,11 @@
 class CScoreboard;
 
 
+/**
+ *	This visitor transfers a click points to game objects.
+ *	It collects a clicked buubles
+ *	and then charges points from them
+ */
 class CClickVisitor : public IGameObjVisitor
 {
 public:
@@ -27,6 +33,10 @@ public:
 	virtual void PostVisit(CGameObject*);
 
 private:
+	/// collection of click points
 	std::vector< SPoint > m_aClicksColl;
-	std::list<CBubble*> m_aClickedBubbles;
+	
+	/// Only one instance should be in collection. 
+	///	Thats why container is std::set
+	std::set<CBubble*> m_aClickedBubbles;
 };

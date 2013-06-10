@@ -5,6 +5,10 @@
 #include "IGameObjVisitor.h"
 
 
+/**
+ *	Visitor that simply calculates a number of bubbles in 
+ *	game object tree.
+ */
 class CCalcBubblesVisitor : public IGameObjVisitor
 {
 public:

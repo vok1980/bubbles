@@ -9,6 +9,9 @@ CCalcBubblesVisitor::CCalcBubblesVisitor() :
 }
 
 
+/**
+ *	Get objects count
+ */
 int CCalcBubblesVisitor::GetCount(void)
 {
 	return m_iCount;
@@ -32,11 +35,17 @@ void CCalcBubblesVisitor::Visit(CBubble*)
 }
 
 
+/**
+ *	Do nothing
+ */
 void CCalcBubblesVisitor::PostVisit(CGameObject*)
 {
 }
 
 
+/**
+ *	Do nothing
+ */
 void CCalcBubblesVisitor::Visit(CScoreboard *pBubble)
 {
 }
