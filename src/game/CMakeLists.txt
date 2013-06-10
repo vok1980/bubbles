@@ -3,6 +3,8 @@ cmake_minimum_required (VERSION 2.8.4)
 
 project (bubbles_game)
 
+add_definitions(-DNOMINMAX)
+
 include_directories ( ./../tools )
 include_directories ( ./visitors )
 include_directories ( ./objects )
