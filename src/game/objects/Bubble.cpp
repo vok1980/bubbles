@@ -18,6 +18,12 @@ CBubble::CBubble(CGameObject *pParent, BoardSize_t iPosX, BoardSize_t iPosY, Boa
 }
 
 
+void CBubble::Move(float fDeltaTime)
+{
+	m_iPosY += GetVelocity() * fDeltaTime;
+}
+
+
 long CBubble::GetPoints(void) const
 {
 	return GetVelocity() / 10;

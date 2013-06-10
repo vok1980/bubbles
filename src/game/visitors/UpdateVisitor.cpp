@@ -37,7 +37,7 @@ void CUpdateVisitor::Visit(CScoreboard *pBubble)
 
 void CUpdateVisitor::Visit(CBubble *pBubble)
 {
-	pBubble->m_iPosY += pBubble->GetVelocity() * m_fDeltaTime;
+	pBubble->Move(m_fDeltaTime);
 	
 	if (!pBubble->IsValid())
 	{

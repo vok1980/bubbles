@@ -13,8 +13,6 @@
  */
 class CBubble : public CGameObject
 {
-	friend class CUpdateVisitor;
-
 public:
 	CBubble(CGameObject *pParent, BoardSize_t iPosX, BoardSize_t iPosY, BoardSize_t dRadius, SColor &refColor);
 
@@ -25,6 +23,7 @@ public:
 	void GetPosition(BoardSize_t &refPosX, BoardSize_t &refPosY, BoardSize_t &refRadius) const;
 	void GetColor(const SColor &refColor) const; 
 	long GetPoints(void) const;
+	void Move(float fDeltaTime);
 
 private:
 	float GetVelocity(void) const;
