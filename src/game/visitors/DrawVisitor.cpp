@@ -41,7 +41,7 @@ void CDrawVisitor::Visit(CScoreboard *pBubble)
 	glTranslatef(pBubble->GetDimention(OD_WIDTH)/5, iParentHeight - 2 * pBubble->GetDimention(OD_HEIGHT), 0);
 
 	char szOutText[256];
-	sprintf(szOutText, "%u", pBubble->GetScore());
+	sprintf_s(szOutText, "%u", pBubble->GetScore());
 	std::string strText(szOutText);
 	
 #ifndef ANDROID
@@ -71,24 +71,46 @@ void CDrawVisitor::Visit(CBubble *pBubble)
 	GLfloat theta;
 	GLfloat pi     = (GLfloat)acos(-1.0);
 	GLfloat radius = iRadius; 
-	GLfloat step   = 8.0f; ///< 8 is enough to look like a circle
-
+	
 	SColor color;
 	pBubble->GetColor(color);
-#ifndef ANDROID
-	// drawing a circle in triangles
-	glBegin(GL_TRIANGLE_FAN);
+
+#define step   8.0f ///< 8 is enough to look like a circle
+#define iPointsCount  (int)(360.0f / step)
+#define iVertValCount  ((iPointsCount + 1) * 3)
+#define iIndValCount   (iPointsCount * 3)
+	
+	static GLfloat pVerts[iVertValCount];
+	static GLushort pInd[iIndValCount];
+
+	memset(pVerts, 0, sizeof(GLfloat) * iVertValCount);
+	memset(pInd, 0, sizeof(GLushort) * iIndValCount);
+
+	GLfloat *itVert = pVerts + 3;
+
+	for(GLfloat a = 0.0f; a < 360.0f; a += step, itVert += 3) 
+	{
+		theta = 2.0f * pi * a / 360.0f;
 		
-		glColor4ub(color.R, color.G, color.B, color.A);
+		*(itVert + 0) = radius * cos(theta);
+		*(itVert + 1) = radius * sin(theta);
+	}
 
-		for(GLfloat a = 0.0f; a < 360.0f; a += step) 
-		{
-			theta = 2.0f * pi * a / 180.0f;
-			glVertex3f(radius * cos(theta), radius * sin(theta), 0.0f);
-		}
+	for ( int lc = 0; lc < iPointsCount; ++lc )
+	{
+//		*( pInd + 0 + lc * 3 ) = 0;
+		*( pInd + 1 + lc * 3 ) = lc + 1;
+		*( pInd + 2 + lc * 3 ) = lc + 2;
+	}
 
-	glEnd();
-#endif		
+	*( pInd + iIndValCount - 1 ) = 1;
+
+	glColor4ub(color.R, color.G, color.B, color.A);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, pVerts);
+
+	glDrawElements(GL_TRIANGLES, iIndValCount, GL_UNSIGNED_SHORT, pInd);
+
 }
 
 
