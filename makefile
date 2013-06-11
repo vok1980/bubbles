@@ -1,5 +1,5 @@
 TOOLCHAIN:=x
-####test 
+####test  
 all:
 	@echo use android target to build android
 
