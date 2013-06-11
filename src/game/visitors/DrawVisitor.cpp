@@ -41,7 +41,7 @@ void CDrawVisitor::Visit(CScoreboard *pBubble)
 	glTranslatef(pBubble->GetDimention(OD_WIDTH)/5, iParentHeight - 2 * pBubble->GetDimention(OD_HEIGHT), 0);
 
 	char szOutText[256];
-	sprintf_s(szOutText, "%u", pBubble->GetScore());
+	sprintf(szOutText, "%u", pBubble->GetScore());
 	std::string strText(szOutText);
 	
 #ifndef ANDROID
