@@ -19,10 +19,12 @@ android.cmake:
 		CFLAGS="-DANDROID -O0" \
 		CXXFLAGS="-DANDROID -O0 -std=c++11" \
 		CC=arm-linux-androideabi-gcc CXX=arm-linux-androideabi-g++ \
-		cmake ..
+		cmake -DANDROID=true ..
 
 ### -DANDROID=true
 
+clean:
+	rm -rf build.android
 
 android.build:
 	cd build.android && make
