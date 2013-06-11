@@ -1,5 +1,5 @@
 TOOLCHAIN:=x
-####test   
+
 all:
 	@echo use android target to build android
 
@@ -20,8 +20,6 @@ android.cmake:
 		CXXFLAGS="-DANDROID -O0 -std=c++11" \
 		CC=arm-linux-androideabi-gcc CXX=arm-linux-androideabi-g++ \
 		cmake -DANDROID=true ..
-
-### -DANDROID=true
 
 clean:
 	rm -rf build.android
