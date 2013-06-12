@@ -1,5 +1,7 @@
 TOOLCHAIN:=x
 
+ARM_SO_DIR:=src/starter.android/Bubbles/libs/armeabi/
+
 all:
 	@echo use android target to build android
 
@@ -26,9 +28,13 @@ clean:
 
 android.build:
 	cd build.android && make
+	mkdir -p $(ARM_SO_DIR)
+	cp build.android/src/starter.android/*.so $(ARM_SO_DIR)
 
 
 check.toolchain:
 	@if [ -d $(TOOLCHAIN)/bin ] ; then true ; \
 	else echo "Couldn't locate android NDK toolchain directory, please invoke make with \"make TOOLCHAIN=/path/to/android/ndk/toolchain ...\"" ; exit 1 ; \
 	fi
+
+
