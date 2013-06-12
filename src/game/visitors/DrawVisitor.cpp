@@ -106,11 +106,11 @@ void CDrawVisitor::Visit(CBubble *pBubble)
 	*( pInd + iIndValCount - 1 ) = 1;
 
 	glColor4ub(color.R, color.G, color.B, color.A);
+	
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glVertexPointer(3, GL_FLOAT, 0, pVerts);
-
 	glDrawElements(GL_TRIANGLES, iIndValCount, GL_UNSIGNED_SHORT, pInd);
-
+	glDisableClientState(GL_VERTEX_ARRAY);
 }
 
 
