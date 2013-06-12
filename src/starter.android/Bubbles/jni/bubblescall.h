@@ -1,6 +1,8 @@
 
 #pragma once
 
+#include <jni.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -13,7 +15,7 @@ JNIEXPORT void JNICALL Java_com_voksoft_bubbles_NativeCaller_nativeUpdate(JNIEnv
 #ifdef __cplusplus
 }
 #endif
-#endif
+
 
 
 

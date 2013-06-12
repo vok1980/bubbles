@@ -9,9 +9,9 @@ JNIEXPORT void JNICALL Java_com_voksoft_bubbles_NativeCaller_nativeInit(JNIEnv *
 }
 
 
-JNIEXPORT void JNICALL Java_com_voksoft_bubbles_NativeCaller_nativeUpdate(JNIEnv * env, jobject jobj);
+JNIEXPORT void JNICALL Java_com_voksoft_bubbles_NativeCaller_nativeUpdate(JNIEnv * env, jobject jobj)
 {
-	
+
 }
 
 
