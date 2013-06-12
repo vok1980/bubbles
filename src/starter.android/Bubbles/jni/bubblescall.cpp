@@ -45,7 +45,7 @@ JNIEXPORT void JNICALL Java_com_voksoft_bubbles_NativeCaller_Update(JNIEnv * env
 	glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 //	checkGlError("glClear");
 
-	GetGame().OnGameLoopTick(0.03); ///<\todo: update time correctly
+	GetGame().OnGameLoopTick();
 }
 
 
