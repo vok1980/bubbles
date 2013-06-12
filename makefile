@@ -17,7 +17,7 @@ android.cmake:
 	mkdir -p build.android
 	cd build.android && \
 		PATH="$(TOOLCHAIN)/bin:$(PATH)" \
-		LDFLAGS="" \
+		LDFLAGS="-lGLESv1_CM" \
 		CFLAGS="-DANDROID -O0" \
 		CXXFLAGS="-DANDROID -O0 -std=c++11" \
 		CC=arm-linux-androideabi-gcc CXX=arm-linux-androideabi-g++ \
