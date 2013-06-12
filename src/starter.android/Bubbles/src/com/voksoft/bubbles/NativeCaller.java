@@ -5,7 +5,7 @@ public class NativeCaller
 {
 	static 
 	{
-		System.loadLibrary("gnustl_shared");
+	//	System.loadLibrary("gnustl_shared");
 	    System.loadLibrary("bubbles");
 	}
     
