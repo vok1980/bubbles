@@ -1,7 +1,7 @@
 
 #pragma once
 
-
+#include <time.h>
 #include <memory>
 #include <map>
 #include <list>
@@ -26,12 +26,14 @@ public:
 
 public:
 	void Init(long iWidth, long iHeight); 
-	void OnGameLoopTick(float fDeltaTime);
+	void OnGameLoopTick(void);
 	void OnMouseClick(const SPoint &point);
+	void OnPause(void);
 
 private:
 	void CalcScene(float fDeltaTime);
 	void DrawFrame(void);
+	float GetGameTimePassed(void);
 
 	BoardSize_t GetDimention(ObjectDimention);
 	long GetMaxBoubblesCount(bool bRecalc = false);
@@ -45,5 +47,8 @@ private:
 	std::list< SPoint > m_aClicks;
 	long m_iBubblesCountLimit;
 	float m_fLastCreationTimeout;
+
+private:
+	clock_t m_clocksLast;
 };
 

@@ -22,6 +22,7 @@
 
 
 CGame::CGame() :
+	m_clocksLast(0),
 	m_pScoreboard(NULL),
 	m_iBubblesCountLimit(0),
 	m_fLastCreationTimeout(0.0f)
@@ -55,10 +56,28 @@ void CGame::Init(long iWidth, long iHeight)
  *
  *	@param fDeltaTime	time elapsed from previous OnGameLoopTick call
  */
-void CGame::OnGameLoopTick(float fDeltaTime)
+void CGame::OnGameLoopTick(void)
 {
+	float fDeltaTime = GetGameTimePassed();
 	CalcScene(fDeltaTime);
 	DrawFrame();
+}
+
+
+float CGame::GetGameTimePassed(void)
+{
+	clock_t clocks = clock();
+
+	if (0 == m_clocksLast)
+	{
+//		m_clocksBegin = clocks;
+		m_clocksLast = clocks;
+	}
+
+	float dRes = (float)(clocks - m_clocksLast) / CLOCKS_PER_SEC;
+	m_clocksLast = clocks;
+	
+   	return dRes;
 }
 
 
@@ -145,6 +164,12 @@ BoardSize_t CGame::GetDimention(ObjectDimention dim)
 void CGame::OnMouseClick(const SPoint &point)
 {	 
 	m_aClicks.push_back(point);
+}
+
+
+void CGame::OnPause(void)
+{
+	m_clocksLast = 0;
 }
 
 

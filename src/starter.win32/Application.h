@@ -40,8 +40,4 @@ private:
 	std::string m_strAppName;
 	std::auto_ptr<CGraphics> m_pGraphics;
 	std::auto_ptr<CGame> m_pGame;
-
-private:
-//	clock_t m_clocksBegin;
-	clock_t m_clocksLast;
 };

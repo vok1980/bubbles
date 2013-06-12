@@ -12,7 +12,6 @@
 
 
 CApplication::CApplication() : 
-	m_clocksLast(0),
 	m_bActive(true)
 {
 }
@@ -186,30 +185,11 @@ int CApplication::Run(void)
 }
 
 
-float CApplication::GetGameTimePassed(void)
-{
-	clock_t clocks = clock();
-
-	if (0 == m_clocksLast)
-	{
-//		m_clocksBegin = clocks;
-		m_clocksLast = clocks;
-	}
-
-	float dRes = (float)(clocks - m_clocksLast) / CLOCKS_PER_SEC;
-	m_clocksLast = clocks;
-	
-   	return dRes;
-}
-
-
 // Функция, вызывающаяся при пустой очереди сообщений
 void CApplication::OnIdle(void)
 {	
-	float dDeltaTime = GetGameTimePassed();
-
 	m_pGraphics->Clear();
-	m_pGame->OnGameLoopTick(dDeltaTime);
+	m_pGame->OnGameLoopTick();
 	m_pGraphics->SwapBuffers();
 }
 
@@ -222,9 +202,9 @@ void CApplication::ReleaseAll(void)
 
 void CApplication::SetActive(bool bActive)
 {
-	if (!bActive)
+	if (!bActive && m_pGame.get())
 	{
-		m_clocksLast = 0;
+		m_pGame->OnPause();
 	}
 
 	m_bActive = bActive;
