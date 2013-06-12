@@ -1,6 +1,9 @@
- 
+
+#include <android/log.h>
+
 #include "bubblescall.h"
 
+#include "platformGL.h"
 #include "game.h"
 
 
@@ -29,7 +32,7 @@ JNIEXPORT void JNICALL Java_com_voksoft_bubbles_NativeCaller_Init(JNIEnv * env, 
     printGLString("Extensions", GL_EXTENSIONS);
 
     glViewport(0, 0, iWidth, iHeight);
-    checkGlError("glViewport");
+//    checkGlError("glViewport");
 
 	GetGame().Init((long)iWidth, (long)iHeight);
 }
@@ -37,10 +40,11 @@ JNIEXPORT void JNICALL Java_com_voksoft_bubbles_NativeCaller_Init(JNIEnv * env, 
 
 JNIEXPORT void JNICALL Java_com_voksoft_bubbles_NativeCaller_Update(JNIEnv * env, jobject jobj)
 {
-	glClearColor(grey, grey, grey, 1.0f);
-	checkGlError("glClearColor");
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+///	checkGlError("glClearColor");
 	glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-	checkGlError("glClear");
+//	checkGlError("glClear");
+
 	GetGame().OnGameLoopTick(0.1); ///<\todo: update time
 }
 
