@@ -32,7 +32,7 @@ clean:
 android.build:
 	cd $(ANDROID_BUILD_DIR) && make
 	mkdir -p $(ARM_SO_DIR)/$(ANDROID_EABI)
-	cp $(ANDROID_BUILD_DIR)/src/platform/android/*.so $(ARM_SO_DIR)/$(ANDROID_EABI)
+	cp $(ANDROID_BUILD_DIR)/platform/android/*.so $(ARM_SO_DIR)/$(ANDROID_EABI)
 
 
 check.toolchain:
