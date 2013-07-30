@@ -1,6 +1,9 @@
 TOOLCHAIN:=x
 
-ARM_SO_DIR:=src/starter.android/Bubbles/libs/armeabi/
+ANDROID_EABI:=armeabi
+ARM_SO_DIR:=../src/platform/android/Bubbles/libs
+ANDROID_BUILD_DIR:=android
+
 
 all:
 	@echo use android target to build android
@@ -14,27 +17,27 @@ android:
 android.cmake:
 	make check.toolchain
 
-	mkdir -p build.android
-	cd build.android && \
+	mkdir -p $(ANDROID_BUILD_DIR)
+	cd $(ANDROID_BUILD_DIR) && \
 		PATH="$(TOOLCHAIN)/bin:$(PATH)" \
 		LDFLAGS="-lstdc++ -lGLESv1_CM -llog" \
 		CFLAGS="-DANDROID -O0" \
 		CXXFLAGS="-DANDROID -O0 -std=c++11" \
 		CC=arm-linux-androideabi-gcc CXX=arm-linux-androideabi-g++ \
-		cmake -DANDROID=true ..
+		cmake -DANDROID=true ../../src
 
 clean:
-	rm -rf build.android
+	rm -rf $(ANDROID_BUILD_DIR)
 
 android.build:
-	cd build.android && make
-	mkdir -p $(ARM_SO_DIR)
-	cp build.android/src/starter.android/*.so $(ARM_SO_DIR)
+	cd $(ANDROID_BUILD_DIR) && make
+	mkdir -p $(ARM_SO_DIR)/$(ANDROID_EABI)
+	cp $(ANDROID_BUILD_DIR)/src/platform/android/*.so $(ARM_SO_DIR)/$(ANDROID_EABI)
 
 
 check.toolchain:
 	@if [ -d $(TOOLCHAIN)/bin ] ; then true ; \
-	else echo "Couldn't locate android NDK toolchain directory, please invoke make with \"make TOOLCHAIN=/path/to/android/ndk/toolchain ...\"" ; exit 1 ; \
+	else echo "Couldn't locate toolchain directory, please invoke make with \"make TOOLCHAIN=/path/to/android/ndk/toolchain ...\"" ; exit 1 ; \
 	fi
 
 
