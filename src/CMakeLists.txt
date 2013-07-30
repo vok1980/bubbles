@@ -5,12 +5,5 @@ project (Bubbles)
 
 INCLUDE(${CMAKE_ROOT}/Modules/FindOpenGL.cmake)
 
-add_subdirectory( ./src/game )
-
-if(WIN32)
-add_subdirectory( ./src/starter.win32 )
-endif(WIN32)
-
-if (ANDROID)
-add_subdirectory( ./src/starter.android )
-endif(ANDROID)
+add_subdirectory( ./game )
+add_subdirectory( ./platform )
