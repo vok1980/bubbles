@@ -1,4 +1,5 @@
 
+tools/android-toolchains
 /build/android
 /build/win32
 
@@ -169,7 +170,11 @@ $RECYCLE.BIN/
 # Mac crap
 .DS_Store
 
+<<<<<<< HEAD
 R.java
 ws
 BuildConfig.java
 org.eclipse.jdt.core.prefs
+=======
+
+>>>>>>> custom ndk toolchains created
