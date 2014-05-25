@@ -1,6 +1,6 @@
 TOOLCHAIN:=x
 
-ANDROID_EABI:=armeabi
+#ANDROID_EABI:=armeabi
 ARM_SO_DIR:=../src/platform/android/Bubbles/libs
 ANDROID_BUILD_DIR:=android
 
@@ -9,30 +9,80 @@ all:
 	@echo use android target to build android
 
 
-android:
-	make android.cmake
-	make android.build
+android: android.arm android.mips android.x86
+#	make android.cmake
+#	make android.build
 
+android.arm: android.armeabi android.armeabi-v7a
 
-android.cmake:
-	make check.toolchain
+android.armeabi:  
+	make \
+		PATH="$(CURDIR)/../tools/android-toolchains/arm-linux-androideabi-4.8/bin:$(PATH)" \
+		BUILD_DIR=android.arm \
+		ANDROID_EABI:=armeabi	\
+		LDFLAGS="-lstdc++ -lGLESv1_CM -llog" \
+		CFLAGS="-mthumb -DANDROID -O0" \
+		CXXFLAGS="-mthumb -DANDROID -O0 -std=c++11" \
+		CC=arm-linux-androideabi-gcc CXX=arm-linux-androideabi-g++ \
+		CMAKE_DEF="-DANDROID=true" \
+	android.build  
 
-	mkdir -p $(ANDROID_BUILD_DIR)
-	cd $(ANDROID_BUILD_DIR) && \
-		PATH="$(TOOLCHAIN)/bin:$(PATH)" \
+android.armeabi-v7a:  
+	make \
+		PATH="$(CURDIR)/../tools/android-toolchains/arm-linux-androideabi-4.8/bin:$(PATH)" \
+		BUILD_DIR=android.armv7-a \
+		ANDROID_EABI:=armeabi-v7a 	\
+		LDFLAGS="-lstdc++ -lGLESv1_CM -llog" \
+		CFLAGS="-march=armv7-a -mfloat-abi=softfp -DANDROID -O0" \
+		CXXFLAGS="-march=armv7-a -mfloat-abi=softfp -DANDROID -O0 -std=c++11" \
+		CC=arm-linux-androideabi-gcc CXX=arm-linux-androideabi-g++ \
+		CMAKE_DEF="-DANDROID=true" \
+	android.build  
+
+android.mips: 
+	make \
+		PATH="$(CURDIR)/../tools/android-toolchains/mipsel-linux-android-4.8/bin:$(PATH)" \
+		BUILD_DIR=android.mips \
+		ANDROID_EABI:=mips  	\
 		LDFLAGS="-lstdc++ -lGLESv1_CM -llog" \
 		CFLAGS="-DANDROID -O0" \
 		CXXFLAGS="-DANDROID -O0 -std=c++11" \
-		CC=arm-linux-androideabi-gcc CXX=arm-linux-androideabi-g++ \
-		cmake -DANDROID=true ../../src
+		CC=mipsel-linux-android-gcc CXX=mipsel-linux-android-g++ \
+		CMAKE_DEF="-DANDROID=true" \
+	android.build  
+
+android.x86:
+	make \
+		PATH="$(CURDIR)/../tools/android-toolchains/x86-4.8/bin:$(PATH)" \
+		BUILD_DIR=android.x86 \
+		ANDROID_EABI:=x86 	\
+		LDFLAGS="-lstdc++ -lGLESv1_CM -llog" \
+		CFLAGS="-DANDROID -O0" \
+		CXXFLAGS="-DANDROID -O0 -std=c++11" \
+		CC=i686-linux-android-gcc CXX=i686-linux-android-g++ \
+		CMAKE_DEF="-DANDROID=true" \
+	android.build  
+
+android.build: android.cmake android.make
+
+android.cmake: 
+
+	mkdir -p $(BUILD_DIR)
+	cd $(BUILD_DIR) && \
+		PATH="${PATH}" \
+		LDFLAGS="${LDFLAGS}" \
+		CFLAGS="${CFLAGS}" \
+		CXXFLAGS="${CXXFLAGS}" \
+		CC=${CC} CXX=${CXX} \
+		cmake ${CMAKE_DEF} ../../src
 
 clean:
 	rm -rf $(ANDROID_BUILD_DIR)
 
-android.build:
-	cd $(ANDROID_BUILD_DIR) && make
+android.make:
+	cd $(BUILD_DIR) && make
 	mkdir -p $(ARM_SO_DIR)/$(ANDROID_EABI)
-	cp $(ANDROID_BUILD_DIR)/platform/android/*.so $(ARM_SO_DIR)/$(ANDROID_EABI)
+	cp $(BUILD_DIR)/platform/android/*.so $(ARM_SO_DIR)/$(ANDROID_EABI)/
 
 
 check.toolchain:
