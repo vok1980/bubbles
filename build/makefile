@@ -3,6 +3,7 @@ TOOLCHAIN:=x
 #ANDROID_EABI:=armeabi
 ARM_SO_DIR:=../src/platform/android/Bubbles/libs
 ANDROID_BUILD_DIR:=android
+ANDROID_TOOLCHAINS_DIR:=$(CURDIR)/../tools/android-toolchains
 
 
 all:
@@ -17,7 +18,7 @@ android.arm: android.armeabi android.armeabi-v7a
 
 android.armeabi:  
 	make \
-		PATH="$(CURDIR)/../tools/android-toolchains/arm-linux-androideabi-4.8/bin:$(PATH)" \
+		PATH="${ANDROID_TOOLCHAINS_DIR}/arm-linux-androideabi-4.8/bin:$(PATH)" \
 		BUILD_DIR=android.arm \
 		ANDROID_EABI:=armeabi	\
 		LDFLAGS="-lstdc++ -lGLESv1_CM -llog" \
@@ -29,7 +30,7 @@ android.armeabi:
 
 android.armeabi-v7a:  
 	make \
-		PATH="$(CURDIR)/../tools/android-toolchains/arm-linux-androideabi-4.8/bin:$(PATH)" \
+		PATH="${ANDROID_TOOLCHAINS_DIR}/arm-linux-androideabi-4.8/bin:$(PATH)" \
 		BUILD_DIR=android.armv7-a \
 		ANDROID_EABI:=armeabi-v7a 	\
 		LDFLAGS="-lstdc++ -lGLESv1_CM -llog" \
@@ -41,7 +42,7 @@ android.armeabi-v7a:
 
 android.mips: 
 	make \
-		PATH="$(CURDIR)/../tools/android-toolchains/mipsel-linux-android-4.8/bin:$(PATH)" \
+		PATH="${ANDROID_TOOLCHAINS_DIR}/mipsel-linux-android-4.8/bin:$(PATH)" \
 		BUILD_DIR=android.mips \
 		ANDROID_EABI:=mips  	\
 		LDFLAGS="-lstdc++ -lGLESv1_CM -llog" \
@@ -53,7 +54,7 @@ android.mips:
 
 android.x86:
 	make \
-		PATH="$(CURDIR)/../tools/android-toolchains/x86-4.8/bin:$(PATH)" \
+		PATH="${ANDROID_TOOLCHAINS_DIR}/x86-4.8/bin:$(PATH)" \
 		BUILD_DIR=android.x86 \
 		ANDROID_EABI:=x86 	\
 		LDFLAGS="-lstdc++ -lGLESv1_CM -llog" \
